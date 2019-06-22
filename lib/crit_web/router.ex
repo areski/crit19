@@ -17,8 +17,10 @@ defmodule CritWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/users", UserController
   end
 
+  
   # Other scopes may use custom stacks.
   # scope "/api", CritWeb do
   #   pipe_through :api
