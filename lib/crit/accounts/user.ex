@@ -12,7 +12,7 @@ defmodule Crit.Accounts.User do
   end
 
   @doc false
-  def changeset(user, attrs) do
+  def harmlessly_updatable_changeset(user, attrs) do
     user
     |> cast(attrs, [:name, :email])
     |> validate_required([:name, :email])
@@ -22,10 +22,10 @@ defmodule Crit.Accounts.User do
 
   def registration_changeset(user, attrs) do
     user
-    |> changeset(attrs)
-    |> cast(attrs, [:password])
+    |> cast(attrs, [:password, :name, :email])
     |> validate_length(:password, min: 6, max: 100)
-    |> put_password_hash()
+    |> put_password_hash
+    |> unique_constraint(:email, name: :unique_active_email)
   end
 
   defp put_password_hash(changeset) do

@@ -6,11 +6,12 @@ defmodule Crit.Repo.Migrations.CreateUsers do
       add :name, :string, null: false
       add :email, :citext, null: false
       add :password_hash, :string
+      add :active, :boolean, default: true, null: false
 
       timestamps()
     end
 
-    create index("users", :email)
+    create unique_index("users", [:email, :active], name: :unique_active_email)
 
 
   end

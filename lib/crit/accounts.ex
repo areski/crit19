@@ -12,17 +12,17 @@ defmodule Crit.Accounts do
 
   def create_user(attrs \\ %{}) do
     %User{}
-    |> User.changeset(attrs)
+    |> User.registration_changeset(attrs)
     |> Repo.insert()
   end
 
   def update_user(%User{} = user, attrs) do
     user
-    |> User.changeset(attrs)
+    |> User.harmlessly_updatable_changeset(attrs)
     |> Repo.update()
   end
 
   def change_user(%User{} = user) do
-    User.changeset(user, %{})
+    User.harmlessly_updatable_changeset(user, %{})
   end
 end
