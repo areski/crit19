@@ -13,10 +13,6 @@
   <%= text_input f, :email %>
   <%= error_tag f, :email %>
 
-  <%= label f, :password_hash %>
-  <%= text_input f, :password_hash %>
-  <%= error_tag f, :password_hash %>
-
   <div>
     <%= submit "Save" %>
   </div>
