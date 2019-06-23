@@ -46,6 +46,7 @@ defmodule Crit.MixProject do
       {:calendar, "~> 0.17"},
       {:faker, "~> 0.12", only: :test},
       {:ex_machina, "~> 2.3"},
+      {:pbkdf2_elixir, "~> 1.0"}
     ]
   end
 
